@@ -2,15 +2,15 @@ body{
   text-align: center;
 }
 #final{
-  width: 25rem;
-  height:20rem;
+  width: 30rem;
+  height:30rem;
   overflow: hidden;
   margin: auto;
   display: block;
 }
 .picture{
   width:25rem;
-  height:20rem;
+  height:25rem;
   margin:auto;
 }
 
@@ -21,8 +21,12 @@ body{
   height:10rem;
 }
 .imgContainer > img{
-  height: 20rem;
+  height: 25rem;
   width: 25rem;
-  margin-left: -2rem;
-  margin-top: -10rem;
+  margin-left: 0rem;
+  margin-top: 0rem;
+}
+
+#drop-zone > .imgContainer{
+ border-style: solid;
 }
