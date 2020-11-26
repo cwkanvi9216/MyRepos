@@ -1,14 +1,26 @@
 var imgSrc = 
 "https://upload.wikimedia.org/wikipedia/commons/thumb/0/07/Johannes_Vermeer_-_Girl_with_pearl_earring.jpg/512px-Johannes_Vermeer_-_Girl_with_pearl_earring.jpg"
 
-var imgWidth = 30;
-var imgHeight = 30;
+var imgWidth = 25;
+var imgHeight = 24;
 var rows = 4;
 var columns = 5;
 
-function randomize(param){
-  //build pieces to randomize the image
+let array = ['a', 'b', 'c', 'd']
+function randomize(puzzle){
+  for(let i = puzzle.length - 1; i > 0 ; i--){
+
+    let randomIndex = Math.floor(Math.random()*i)
+    let accessedValue = puzzle[randomIndex]
+
+    puzzle[randomIndex] = puzzle[i]
+    puzzle[i] = accessedValue
+
+  }
 } 
+
+randomize(array)
+//console.log(array)
 
 function init(){
   $("h1").html("Solve the Puzzle!");
@@ -41,6 +53,19 @@ $("#drop-zone").append("<div class='"+(i*columns+j)+
 
  $("#pieces>.imgContainer").draggable();
 }
+
+$(function(){
+$("#drop-zone > .imgContainer").droppable({
+  drop: function(event, ui){
+    console.log("hello")
+    $(this).css({
+      "background-color": "red !important"
+      ui.draggable.css({"border":".1rem solid red"})
+    })
+}
+
+  });
+})
 
 //ratio is about 0.85
 $(document).ready(function(){
