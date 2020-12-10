@@ -3,8 +3,10 @@ var imgSrc =
 
 var imgWidth = 25;
 var imgHeight = 24;
-var rows = 4;
-var columns = 5;
+var rows = 1;
+var columns = 1;
+var total = rows*columns
+var count = 0;
 
 let array = ['a', 'b', 'c', 'd']
 function randomize(puzzle){
@@ -18,12 +20,11 @@ function randomize(puzzle){
 
   }
 } 
-
 randomize(array)
 //console.log(array)
-
 function init(){
   $("h1").html("Solve the Puzzle!");
+  $(".picture").empty()
   $("#final").hide();
 
   var puzzle = []
@@ -36,10 +37,8 @@ function init(){
 
 $("#drop-zone").append("<div class='"+(i*columns+j)+
 " imgContainer'></div>");
-
     }
   }
-
   randomize(puzzle)
 
   puzzle.forEach(function(piece){
@@ -52,22 +51,41 @@ $("#drop-zone").append("<div class='"+(i*columns+j)+
   });
 
  $("#pieces>.imgContainer").draggable();
-}
 
-$(function(){
-$("#drop-zone > .imgContainer").droppable({
-  drop: function(event, ui){
-    console.log("hello")
-    $(this).css({
-      "background-color": "red !important"
-      ui.draggable.css({"border":".1rem solid red"})
-    })
-}
+  $("#drop-zone > .imgContainer").droppable({
+    drop: function(event, ui){
+      var destNum = $(this).attr("class").split(" ")[0]
 
+      var pieceNum = ui.draggable.attr("class").split(" ")[0]
+    
+
+    
+        $(ui.draggable).css({
+          "border-style":"none"
+        })
+        $(this).append(ui.draggable.find("img"))
+        ui.draggable.addClass("invisible")
+        count += 1
+
+      if(count == total){
+        $("h1").html("Great Job! Click to replay.")
+        $("#final").show()
+        $(".picture").empty()
+      
+      }
+       else{
+        
+      $(this).css({"background-color":"goldenrod"})
+      ui.draggable.css({"border":".1rem solid goldenrod"})
+      }
+
+    }
   });
-})
 
-//ratio is about 0.85
+//var attributes = $("#demo").attr("class").split(" ")
+//console.log(attributes[3])
+
+}
 $(document).ready(function(){
 $("#final").click(init)
 })
