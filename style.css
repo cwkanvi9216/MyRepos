@@ -7,6 +7,7 @@ body{
   overflow: hidden;
   margin: auto;
   display: block;
+  outline: rgba(3, 9, 65, 0.801) solid 10px;
 }
 .picture{
   width:25rem;
@@ -30,3 +31,45 @@ body{
 #drop-zone > .imgContainer{
  border-style: solid;
 }
+
+body{
+  background-color:steelblue;
+  font-family: 'Courier New', Courier, monospace
+}
+
+@media (max-width: 575px) { 
+body{
+  background-color:aliceblue;
+  color: rgb(63, 52, 52);
+}
+ }
+
+@media (min-width: 576px) and (max-width: 767px) { 
+  body{
+background-color:rgb(196, 228, 255);
+color: rgb(63, 52, 52);
+  }
+ }
+
+
+@media (min-width: 768px) and (max-width: 991px) { 
+body{
+background-color:rgb(164, 196, 233);
+color: rgb(63, 52, 52);
+}
+ }
+
+
+@media (min-width: 992px) and (max-width: 1199px) {
+body{
+background-color:steelblue;
+color: white;
+}
+ }
+
+@media (min-width: 1200px) { 
+  body{
+background-color:rgb(4, 79, 139);
+color: white;
+  }
+ }

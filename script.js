@@ -58,11 +58,13 @@ $("#drop-zone").append("<div class='"+(i*columns+j)+
 
       var pieceNum = ui.draggable.attr("class").split(" ")[0]
     
-
-    
-        $(ui.draggable).css({
+        if(pieceNum == destNum){
+          $(ui.draggable).css({
           "border-style":"none"
         })
+        $(this).append(ui.draggable.find("img"))
+       .css("border-style","none");
+
         $(this).append(ui.draggable.find("img"))
         ui.draggable.addClass("invisible")
         count += 1
@@ -71,8 +73,11 @@ $("#drop-zone").append("<div class='"+(i*columns+j)+
         $("h1").html("Great Job! Click to replay.")
         $("#final").show()
         $(".picture").empty()
+        
       
       }
+        }
+
        else{
         
       $(this).css({"background-color":"goldenrod"})
